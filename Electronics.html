@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ikman - Electronics Marketplace</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Custom scrollbar for beautiful UI */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+    </style>
+</head>
+<body class="font-['Inter'] bg-slate-50 flex flex-col min-h-screen text-slate-800">
+
+    <header class="bg-sky-950 p-4 sticky top-0 z-50 shadow-md">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+            
+            <a href="index.html" class="flex items-center gap-3 shrink-0">
+                <img src="images/logo.png" alt="Company Logo" class="h-8 sm:h-10 w-auto object-contain fallback-img" onerror="this.style.display='none'">
+                <h1 class="text-white text-xl sm:text-2xl font-bold tracking-wide">Company</h1>
+            </a>
+            
+            <form class="w-full max-w-md mx-auto sm:mx-0 order-3 sm:order-none">   
+                <label for="default-search" class="sr-only">Search</label>
+                <div class="relative">
+                    <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                        <svg class="w-4 h-4 text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
+                        </svg>
+                    </div>
+                    <input type="search" id="default-search" class="block w-full p-3 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-white focus:ring-yellow-400 focus:border-yellow-400 focus:outline-none" placeholder="Search Vehicles, Electronics..." required />
+                    <button type="submit" class="text-sky-950 absolute end-2 bottom-1.5 bg-yellow-400 hover:bg-yellow-500 font-semibold rounded-md text-sm px-4 py-1.5 transition duration-200">Search</button>
+                </div>
+            </form>
+
+            <div class="w-full sm:w-auto flex justify-center sm:justify-end order-2 sm:order-none">
+                <a href="Login.html" class="text-sky-950 bg-yellow-400 hover:bg-yellow-500 font-semibold rounded-lg text-sm px-5 py-2.5 transition duration-200 text-center w-full sm:w-auto block">
+                    Sign in
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto p-4 md:p-6 flex-grow w-full">
+        <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
+            
+            <div class="lg:hidden">
+                <button class="bg-yellow-400 text-sky-950 px-5 py-3 rounded-full fixed bottom-6 right-6 z-40 shadow-xl flex items-center justify-center font-bold border border-yellow-500/50 hover:scale-105 transition active:scale-95" onclick="toggleSidebar()">
+                    <i class="fas fa-sliders-h mr-2"></i> Filters
+                </button>
+            </div>
+
+            <div id="sidebarOverlay" class="fixed inset-0 bg-slate-900/40 backdrop-blur-sm z-40 hidden lg:hidden" onclick="toggleSidebar()"></div>
+          
+            <aside id="filterSidebar" class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 fixed overflow-y-auto top-0 left-0 h-full w-80 transform -translate-x-full transition-transform duration-300 ease-in-out z-50 lg:relative lg:translate-x-0 lg:w-full lg:h-auto lg:z-10">
+                <div class="flex justify-between items-center mb-6 lg:hidden border-b pb-4">
+                    <h2 class="text-xl font-bold text-slate-900">Filters</h2>
+                    <button class="text-slate-500 hover:text-slate-800 p-2" onclick="toggleSidebar()">
+                        <i class="fas fa-times text-xl"></i>
+                    </button>
+                </div>
+                
+                <h2 class="text-xl font-bold mb-6 text-slate-900 hidden lg:block border-b pb-2">Electronics</h2>
+          
+                <div class="mb-6">
+                    <h3 class="text-slate-900 font-semibold mb-3 text-sm uppercase tracking-wider">Category</h3>
+                    <div class="space-y-2.5 text-slate-600">
+                        <label class="flex items-center cursor-pointer hover:text-slate-900"><input type="checkbox" class="rounded text-sky-600 focus:ring-sky-500 mr-2" /> Laptops</label>
+                        <label class="flex items-center cursor-pointer hover:text-slate-900"><input type="checkbox" class="rounded text-sky-600 focus:ring-sky-500 mr-2" /> Mobile Phones</label>
+                        <label class="flex items-center cursor-pointer hover:text-slate-900"><input type="checkbox" class="rounded text-sky-600 focus:ring-sky-500 mr-2" /> Tablets</label>
+                        <label class="flex items-center cursor-pointer hover:text-slate-900"><input type="checkbox" class="rounded text-sky-600 focus:ring-sky-500 mr-2" /> Home Appliances</label>
+                        <label class="flex items-center cursor-pointer hover:text-slate-900"><input type="checkbox" class="rounded text-sky-600 focus:ring-sky-500 mr-2" /> Other Electronics</label>
+                    </div>
+                </div>
+          
+                <div class="mb-6 bg-slate-50 p-4 rounded-xl border border-slate-100">
+                    <h3 class="text-slate-900 font-semibold mb-2 text-sm uppercase tracking-wider">Price Range</h3>
+                    <div class="flex justify-between text-xs font-medium text-slate-500">
+                        <span>Rs. 0</span>
+                        <span>Rs. 200,000+</span>
+                    </div>
+                    <input type="range" id="priceRange" min="0" max="200000" step="5000" value="50000" class="w-full mt-2 accent-sky-950 cursor-pointer">
+                    <p class="text-center text-xs font-bold text-sky-950 mt-3 bg-yellow-300/50 py-1.5 rounded">Selected: <span id="selectedPrice">Rs. 50,000</span></p>
+                </div>
+          
+                <div class="mb-6">
+                    <h3 class="text-slate-900 font-semibold mb-3 text-sm uppercase tracking-wider">Condition</h3>
+                    <div class="space-y-2.5 text-slate-600">
+                        <label class="flex items-center cursor-pointer hover:text-slate-900"><input type="checkbox" class="rounded text-sky-600 focus:ring-sky-500 mr-2" /> Brand New</label>
+                        <label class="flex items-center cursor-pointer hover:text-slate-900"><input type="checkbox" class="rounded text-sky-600 focus:ring-sky-500 mr-2" /> Used</label>
+                    </div>
+                </div>
+          
+                <div class="mb-6">
+                    <button type="button" class="w-full flex justify-between items-center text-slate-900 font-semibold text-sm uppercase tracking-wider mb-2 focus:outline-none" onclick="toggleFilter('location')">
+                        <span>Location</span>
+                        <i class="fas fa-chevron-down text-xs transition-transform duration-300" id="icon-location"></i>
+                    </button>
+                    <div id="filter-location" class="space-y-2.5 text-slate-600 hidden max-h-48 overflow-y-auto pr-1 mt-3">
+                        <label class="flex items-center cursor-pointer hover:text-slate-900"><input type="checkbox" class="rounded text-sky-600 focus:ring-sky-500 mr-2" /> All of Sri Lanka</label>
+                        <label class="flex items-center cursor-pointer hover:text-slate-900"><input type="checkbox" class="rounded text-sky-600 focus:ring-sky-500 mr-2" /> Colombo</label>
+                        <label class="flex items-center cursor-pointer hover:text-slate-900"><input type="checkbox" class="rounded text-sky-600 focus:ring-sky-500 mr-2" /> Kandy</label>
+                        <label class="flex items-center cursor-pointer hover:text-slate-900"><input type="checkbox" class="rounded text-sky-600 focus:ring-sky-500 mr-2" /> Gampaha</label>
+                        <label class="flex items-center cursor-pointer hover:text-slate-900"><input type="checkbox" class="rounded text-sky-600 focus:ring-sky-500 mr-2" /> Kurunegala</label>
+                        <label class="flex items-center cursor-pointer hover:text-slate-900"><input type="checkbox" class="rounded text-sky-600 focus:ring-sky-500 mr-2" /> Galle</label>
+                        <label class="flex items-center cursor-pointer hover:text-slate-900"><input type="checkbox" class="rounded text-sky-600 focus:ring-sky-500 mr-2" /> Jaffna</label>
+                    </div>
+                </div>
+          
+                <button class="w-full bg-sky-950 text-white py-3 rounded-xl font-medium shadow-md hover:bg-sky-900 transition duration-200">
+                    Apply Filters
+                </button>
+            </aside>
+          
+            <div class="lg:col-span-3 space-y-6">
+                
+                <div class="relative w-full glide-03 bg-white p-4 rounded-2xl shadow-sm border border-slate-100">
+                    <div class="overflow-hidden relative rounded-xl" data-glide-el="track">
+                        <ul class="relative w-full flex whitespace-nowrap p-0 m-0">
+                            <li class="relative list-none min-w-full whitespace-normal">
+                                <a href="Moreinfo-electronics.html" class="block relative group overflow-hidden rounded-xl h-64">
+                                    <img src="Images/phone/phone/1.jpg" alt="Featured Item" class="w-full h-full object-cover group-hover:scale-105 transition duration-500 bg-slate-200" />
+                                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/30 to-transparent flex flex-col justify-end p-5 text-white">
+                                        <span class="bg-yellow-400 text-sky-950 text-xs font-bold px-2 py-0.5 rounded w-max mb-2">FEATURED</span>
+                                        <h3 class="text-xl font-bold">REMAX CHARGING POWER BANK</h3>
+                                        <p class="text-yellow-400 font-semibold text-lg mt-1">LKR 4,500.00</p>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="relative list-none min-w-full whitespace-normal">
+                                <a href="Moreinfo-electronics.html" class="block relative group overflow-hidden rounded-xl h-64">
+                                    <img src="Images/phone/phone/1.jpg" alt="Featured Item" class="w-full h-full object-cover group-hover:scale-105 transition duration-500 bg-slate-200" />
+                                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/30 to-transparent flex flex-col justify-end p-5 text-white">
+                                        <span class="bg-yellow-400 text-sky-950 text-xs font-bold px-2 py-0.5 rounded w-max mb-2">FEATURED</span>
+                                        <h3 class="text-xl font-bold">REMAX 10000MAH POWER BANK</h3>
+                                        <p class="text-yellow-400 font-semibold text-lg mt-1">LKR 4,500.00</p>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                  
+                    <div class="absolute left-0 flex items-center justify-between w-full h-0 px-6 top-1/2 z-10" data-glide-el="controls">
+                        <button class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/90 shadow-md text-sky-950 hover:bg-white transition" data-glide-dir="<" aria-label="prev slide">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <button class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/90 shadow-md text-sky-950 hover:bg-white transition" data-glide-dir=">" aria-label="next slide">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="space-y-4">
+                    
+                    <a class="group block rounded-2xl overflow-hidden bg-white border border-slate-100 shadow-sm hover:shadow-md transition duration-300 p-3" href="Moreinfo-electronics.html">
+                        <div class="flex flex-col sm:flex-row gap-4">
+                            <div class="shrink-0 relative rounded-xl overflow-hidden w-full sm:w-52 h-40 bg-slate-100">
+                                <img class="group-hover:scale-105 transition duration-500 size-full absolute inset-0 object-cover" src="Images/phone/phone/1.jpg" alt="Product Image">
+                            </div>
+                            <div class="grow flex flex-col justify-between py-1">
+                                <div>
+                                    <div class="flex items-center justify-between text-xs text-slate-400 mb-1">
+                                        <span class="text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-md font-medium"><i class="far fa-clock mr-1"></i>5 mins ago</span>
+                                        <span><i class="far fa-eye mr-1"></i>500 views</span>
+                                    </div>
+                                    <h3 class="text-lg font-bold text-slate-800 group-hover:text-sky-600 transition line-clamp-2">
+                                        REMAX 10000MAH FAST CHARGING POWER BANK RPP-657
+                                    </h3>
+                                    <p class="text-sm text-slate-500 mt-1"><i class="fas fa-map-marker-alt mr-1 text-slate-400"></i>Colombo, Sri Lanka</p>
+                                </div>
+                                <div class="mt-3 sm:mt-0 flex items-baseline justify-between border-t border-slate-100 pt-2">
+                                    <span class="text-xl font-extrabold text-sky-950">LKR 4,500</span>
+                                    <span class="text-xs font-semibold px-2 py-1 bg-slate-100 text-slate-600 rounded-lg">Verified</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a class="group block rounded-2xl overflow-hidden bg-white border border-slate-100 shadow-sm hover:shadow-md transition duration-300 p-3" href="Moreinfo-electronics.html">
+                        <div class="flex flex-col sm:flex-row gap-4">
+                            <div class="shrink-0 relative rounded-xl overflow-hidden w-full sm:w-52 h-40 bg-slate-100">
+                                <img class="group-hover:scale-105 transition duration-500 size-full absolute inset-0 object-cover" src="Images/phone/phone/1.jpg" alt="Product Image">
+                            </div>
+                            <div class="grow flex flex-col justify-between py-1">
+                                <div>
+                                    <div class="flex items-center justify-between text-xs text-slate-400 mb-1">
+                                        <span class="text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-md font-medium"><i class="far fa-clock mr-1"></i>12 mins ago</span>
+                                        <span><i class="far fa-eye mr-1"></i>320 views</span>
+                                    </div>
+                                    <h3 class="text-lg font-bold text-slate-800 group-hover:text-sky-600 transition line-clamp-2">
+                                        REMAX 10000MAH FAST CHARGING POWER BANK RPP-657
+                                    </h3>
+                                    <p class="text-sm text-slate-500 mt-1"><i class="fas fa-map-marker-alt mr-1 text-slate-400"></i>Kandy, Sri Lanka</p>
+                                </div>
+                                <div class="mt-3 sm:mt-0 flex items-baseline justify-between border-t border-slate-100 pt-2">
+                                    <span class="text-xl font-extrabold text-sky-950">LKR 4,500</span>
+                                    <span class="text-xs font-semibold px-2 py-1 bg-slate-100 text-slate-600 rounded-lg">Verified</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                
+                <nav class="flex justify-center items-center gap-2 pt-4" aria-label="Pagination">
+                    <button type="button" class="w-10 h-10 inline-flex justify-center items-center rounded-xl bg-white border border-slate-200 text-slate-600 hover:bg-slate-50 transition">
+                        <i class="fas fa-chevron-left text-xs"></i>
+                    </button>
+                    <button type="button" class="w-10 h-10 flex justify-center items-center bg-sky-950 text-white font-bold rounded-xl">1</button>
+                    <button type="button" class="w-10 h-10 flex justify-center items-center bg-white border border-slate-200 text-slate-600 hover:bg-slate-50 font-medium rounded-xl transition">2</button>
+                    <button type="button" class="w-10 h-10 flex justify-center items-center bg-white border border-slate-200 text-slate-600 hover:bg-slate-50 font-medium rounded-xl transition">3</button>
+                    <button type="button" class="w-10 h-10 inline-flex justify-center items-center rounded-xl bg-white border border-slate-200 text-slate-600 hover:bg-slate-50 transition">
+                        <i class="fas fa-chevron-right text-xs"></i>
+                    </button>
+                </nav>
+            </div>
+        </div>
+    </main>
+  
+    <footer class="bg-sky-950 text-slate-300 py-12 px-6 border-t border-sky-900 mt-auto">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-yellow-400 font-semibold mb-4 text-sm uppercase tracking-wider">More</h3>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="hover:text-white transition">Sell Fast</a></li>
+                        <li><a href="#" class="hover:text-white transition">Membership</a></li>
+                        <li><a href="#" class="hover:text-white transition">Banner Ads</a></li>
+                        <li><a href="#" class="hover:text-white transition">Boost Ad</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-yellow-400 font-semibold mb-4 text-sm uppercase tracking-wider">Help & Support</h3>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="hover:text-white transition">FAQ</a></li>
+                        <li><a href="#" class="hover:text-white transition">Stay safe</a></li>
+                        <li><a href="#" class="hover:text-white transition">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-yellow-400 font-semibold mb-4 text-sm uppercase tracking-wider">About</h3>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="hover:text-white transition">About Us</a></li>
+                        <li><a href="#" class="hover:text-white transition">Careers</a></li>
+                        <li><a href="#" class="hover:text-white transition">Terms & Conditions</a></li>
+                        <li><a href="#" class="hover:text-white transition">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-yellow-400 font-semibold mb-4 text-sm uppercase tracking-wider">Blog & Guides</h3>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="hover:text-white transition">CarsGuide</a></li>
+                        <li><a href="#" class="hover:text-white transition">BikesGuide</a></li>
+                        <li><a href="#" class="hover:text-white transition">Official Blog</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mt-8 pt-6 border-t border-sky-900/60 text-center">
+                <p class="text-xs text-slate-400">2022 - 2026 © All Rights Reserved | Powered by Silicon Radon Networks (Pvt) Ltd</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.0.2/glide.js"></script>
+    <script src="script.js"></script>
+    <script>
+        // Initialize Glide Carousel securely
+        document.addEventListener('DOMContentLoaded', function() {
+            if (document.querySelector('.glide-03')) {
+                var glide03 = new Glide('.glide-03', {
+                    type: 'carousel',
+                    focusAt: 'center',
+                    perView: 1,
+                    autoplay: 3000,
+                    animationDuration: 700,
+                    gap: 0
+                });
+                glide03.mount();
+            }
+
+            // Sync Price Range Input Value Real-time
+            const priceRange = document.getElementById('priceRange');
+            const selectedPrice = document.getElementById('selectedPrice');
+            if (priceRange && selectedPrice) {
+                priceRange.addEventListener('input', function(e) {
+                    selectedPrice.textContent = 'Rs. ' + parseInt(e.target.value).toLocaleString();
+                });
+            }
+        });
+
+        // Toggle Responsive Mobile Sidebar Display
+        function toggleSidebar() {
+            const sidebar = document.getElementById('filterSidebar');
+            const overlay = document.getElementById('sidebarOverlay');
+            
+            sidebar.classList.toggle('-translate-x-full');
+            overlay.classList.toggle('hidden');
+        }
+
+        // Accordion Animation For Filter Child Categories
+        function toggleFilter(filterId) {
+            const container = document.getElementById(`filter-${filterId}`);
+            const icon = document.getElementById(`icon-${filterId}`);
+            
+            if (container && icon) {
+                container.classList.toggle('hidden');
+                icon.classList.toggle('rotate-180');
+            }
+        }
+    </script>
+</body>
+</html>

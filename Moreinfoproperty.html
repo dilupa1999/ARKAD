@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Mirrored from project-ikman.vercel.app/Moreinfoproperty.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 07 Jun 2026 03:37:28 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ikman</title>
+    <script src="https://cdn.tailwindcss.com/"></script>
+    <link href="../cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+    <script src="../kit.fontawesome.com/a076d05399.html" crossorigin="anonymous"></script>
+    <link href="css/styles.css" rel="stylesheet">
+</head>
+<body>
+    <div class="min-h-screen bg-gray-100">
+      <!-- Header -->
+ <header class="bg-sky-950 p-4 sticky top-0 z-50 shadow-md">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+        
+        <a href="index.html" class="flex items-center gap-3 shrink-0">
+            <img src="images/logo.png" alt="Company Logo" class="h-8 sm:h-10 w-auto object-contain">
+            <h1 class="text-white text-xl sm:text-2xl font-bold tracking-wide">Company</h1>
+        </a>
+        
+        <form class="w-full max-w-md mx-auto sm:mx-0 order-3 sm:order-none">   
+            <label for="default-search" class="sr-only">Search</label>
+            <div class="relative">
+                <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                    <svg class="w-4 h-4 text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
+                    </svg>
+                </div>
+                <input type="search" id="default-search" class="block w-full p-3 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-white focus:ring-yellow-400 focus:border-yellow-400 focus:outline-none" placeholder="Search Vehicles, Electronics..." required />
+                <button type="submit" class="text-sky-950 absolute end-2 bottom-1.5 bg-yellow-400 hover:bg-yellow-500 font-semibold rounded-md text-sm px-4 py-1.5 transition duration-200">Search</button>
+            </div>
+        </form>
+
+        <div class="w-full sm:w-auto flex justify-center sm:justify-end order-2 sm:order-none">
+            <a href="Login.html" class="text-sky-950 bg-yellow-400 hover:bg-yellow-500 font-semibold rounded-lg text-sm px-5 py-2.5 transition duration-200 text-center w-full sm:w-auto block">
+                Sign in
+            </a>
+        </div>
+
+    </div>
+</header>
+
+<div class="max-w-7xl mx-auto mt-6 bg-gray-50 mb-6">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+      <!-- Sidebar Filters -->
+   <!-- Filter Sidebar -->
+   <div class="relative">
+    <!-- Toggle Button for Small Screens -->
+    <button
+      class="bg-yellow-400 text-black p-2 rounded-md fixed bottom-2 right-4 z-50 sm:hidden"
+      onclick="toggleSidebar()"
+    >
+      <i class="fas fa-sliders-h"></i>
+    </button>
+  
+    <!-- Sidebar Container -->
+    <aside
+      id="filterSidebar"
+      class="bg-white p-4 rounded-lg shadow-md fixed top-0 left-0 h-full overflow-y-auto w-64 transform -translate-x-full transition-transform duration-300 z-40 sm:relative sm:translate-x-0 sm:w-full sm:h-auto"
+    >
+      <div class="flex justify-between items-center mb-4 sm:hidden">
+        <h2 class="text-xl font-bold">Filters</h2>
+        <button
+          class="text-gray-500 hover:text-gray-700"
+          onclick="toggleSidebar()"
+        >
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <h2 class="text-xl font-bold mb-4 hidden sm:block">Property</h2>
+  
+      <div class="mb-6">
+        <h3 class="text-gray-700 font-medium mb-2">Category</h3>
+        <div class="space-y-2">
+          <label class="block">
+            <input type="checkbox" class="mr-2" /> Land
+          </label>
+          <label class="block">
+            <input type="checkbox" class="mr-2" /> Houses
+          </label>
+          <label class="block">
+            <input type="checkbox" class="mr-2" /> Apartment
+          </label>
+          <label class="block">
+            <input type="checkbox" class="mr-2" /> Commercial Property Rent
+          </label>
+          <label class="block">
+            <input type="checkbox" class="mr-2" /> Commercial Property Sale
+          </label>
+          <label class="block">
+            <input type="checkbox" class="mr-2" /> Holiday Short-term rental
+          </label>
+        </div>
+      </div>
+  
+      <!-- Price Range Filter -->
+      <!-- <div class="relative mb-6">
+  <label for="labels-range-input" class="sr-only">Labels range</label>
+  <input 
+    id="labels-range-input" 
+    type="range" 
+    value="1000" 
+    min="100" 
+    max="1500" 
+    class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer "
+  />
+  <span class="text-sm text-gray-700  absolute start-0 -bottom-6">Min (LKR 10000)</span>
+  
+  <span class="text-sm text-gray-700  absolute end-0 -bottom-6">Max (LKR 150000)</span>
+</div> -->
+
+
+  
+      <!-- Condition Filter -->
+      <!-- <div class="mb-2  mt-4">
+        <h3 class="text-gray-700 font-medium mb-2">Condition</h3>
+        <div class="space-y-2">
+          <label class="block">
+            <input type="checkbox" class="mr-2" /> Brand New
+          </label>
+          <label class="block">
+            <input type="checkbox" class="mr-2" /> Used
+          </label>
+        </div>
+      </div> -->
+  
+      <!-- Location Filter -->
+      <div class="mb-4">
+        <button
+          type="button"
+          class="w-full flex justify-between items-center text-left text-gray-700 font-medium mb-2"
+          onclick="toggleFilter('condition')"
+        >
+          Location
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-5 w-5 transform transition-transform"
+            id="icon-condition"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M19 9l-7 7-7-7"
+            />
+          </svg>
+        </button>
+        <div id="filter-condition" class="space-y-2 hidden">
+          <label class="block">
+            <input type="checkbox" class="mr-2" /> All of Sri Lanka
+          </label>
+          <label class="block">
+            <input type="checkbox" class="mr-2" /> Colombo
+          </label>
+          <label class="block">
+            <input type="checkbox" class="mr-2" /> Kandy
+          </label>
+          <label class="block">
+            <input type="checkbox" class="mr-2" /> Gampaha
+          </label>
+          <label class="block">
+            <input type="checkbox" class="mr-2" /> Kurunagala
+          </label>
+          <label class="block">
+            <input type="checkbox" class="mr-2" /> Galle
+          </label>
+          <label class="block">
+            <input type="checkbox" class="mr-2" /> Jaffna
+          </label>
+        </div>
+      </div>
+  
+      <!-- Apply Filters Button -->
+      <button
+        class="w-full bg-sky-950 text-white py-2 rounded-md shadow-md hover:bg-sky-900"
+      >
+        Apply Filters
+      </button>
+    </aside>
+  </div>
+  
+  
+
+      <!-- Main Content -->
+      <div class="col-span-3">
+        <div class="bg-white">
+            <div class="container mx-auto px-4 py-8">
+              <div class="flex flex-wrap -mx-4">
+                <div class="w-full md:w-1/2 px-4 mb-8">
+                  <img 
+                    src="Images/House/1.jpg" 
+                    alt="Product" 
+                    class="w-full h-auto rounded-lg shadow-md mb-4 cursor-pointer" 
+                    id="mainImage" 
+                    onclick="openFullscreen(this.src)"
+                  >
+                  <div class="flex gap-4 py-4 justify-center overflow-x-auto">
+                    <img 
+                      src="Images/House/2.jpg" 
+                      alt="Thumbnail 1" 
+                      class="size-16 sm:size-20 object-cover rounded-md cursor-pointer opacity-60 hover:opacity-100 transition duration-300"
+                      onclick="changeImage(this.src)"
+                    >
+                    <img 
+                      src="Images/House/3.jpg" 
+                      alt="Thumbnail 2" 
+                      class="size-16 sm:size-20 object-cover rounded-md cursor-pointer opacity-60 hover:opacity-100 transition duration-300"
+                      onclick="changeImage(this.src)"
+                    >
+                    <img 
+                      src="Images/House/4.jpg" 
+                      alt="Thumbnail 3" 
+                      class="size-16 sm:size-20 object-cover rounded-md cursor-pointer opacity-60 hover:opacity-100 transition duration-300"
+                      onclick="changeImage(this.src)"
+                    >
+                    <img 
+                      src="Images/House/5.jpg" 
+                      alt="Thumbnail 4" 
+                      class="size-16 sm:size-20 object-cover rounded-md cursor-pointer opacity-60 hover:opacity-100 transition duration-300"
+                      onclick="changeImage(this.src)"
+                    >
+                  </div>
+                
+                </div>
+                
+                <!-- Modal for Fullscreen Image -->
+                <div 
+                  id="fullscreenModal" 
+                  class="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center hidden z-50">
+                  <div class="relative">
+                    <img id="fullscreenImage" src="#" alt="Fullscreen" class="max-w-full max-h-full rounded-lg shadow-lg">
+                    <!-- Close Button -->
+                    <button 
+                      onclick="closeFullscreen()" 
+                      class="absolute top-2 right-2 text-white text-2xl font-bold bg-gray-800 rounded-full w-10 h-10 flex items-center justify-center hover:bg-gray-700">
+                      &times;
+                    </button>
+                    <!-- Navigation Buttons -->
+                    <button 
+                      onclick="navigateImage(-1,'property')" 
+                      class="absolute left-4 top-1/2 transform -translate-y-1/2 text-white text-2xl bg-gray-800 rounded-full w-12 h-12 flex items-center justify-center hover:bg-gray-700">
+                      <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button 
+                      onclick="navigateImage(1,'property')" 
+                      class="absolute right-4 top-1/2 transform -translate-y-1/2 text-white text-2xl bg-gray-800 rounded-full w-12 h-12 flex items-center justify-center hover:bg-gray-700">
+                      <i class="fas fa-chevron-right"></i>
+                    </button>
+                  </div>
+                </div>
+          
+                <!-- Product Details -->
+                <div class="w-full md:w-1/2 px-4">
+                  <h2 class="text-3xl font-bold mb-2">Apartment for Rent in Malabe
+                </h2>
+                  <p class="text-gray-600 mb-4">Posted on 24 Jan 9:57 am</p>
+                  <div class="mb-4">
+                    <span class="text-2xl font-bold mr-2">LKR:10000000</span>
+                  </div>
+                  <div class="flex items-center mb-4">
+                    <i class="fa fa-eye" aria-hidden="true"></i>
+                    <span class="ml-2 text-gray-600"> 120 Views</span>
+                  </div>
+                  <!-- <p class="text-gray-700 mb-6">Experience premium sound quality and industry-leading noise cancellation
+                    with
+                    these wireless headphones. Perfect for music lovers and frequent travelers.</p> -->
+                    
+                      <div class="grid grid-cols-2 gap-4">
+                        <div>
+                          <p class="text-gray-600">Beds:</p>
+                          <p>2</p>
+                        </div>
+                        <div>
+                          <p class="text-gray-600">Baths:</p>
+                          <p>2</p>
+                        </div>
+                        <div>
+                          <p class="text-gray-600">Size</p>
+                          <p>750 sq ft</p>
+                        </div>
+                    
+                      </div>
+                  <div class="flex space-x-4 mb-6 mt-4">
+                    <button class="bg-sky-950 flex gap-2 items-center text-white px-6 py-2 rounded-md hover:bg-sky-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+                                  <i class="fa fa-phone" aria-hidden="true"></i>
+                                  +947xxxxxxx
+                              </button>
+                              <button class="bg-yellow-500 flex gap-2 items-center text-white px-6 py-2 rounded-md hover:bg-amber-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+                                <i class="fa fa-commenting" aria-hidden="true"></i>
+                                Message
+                            </button>
+            
+                  </div>
+          
+                  <div>
+                    <h3 class="text-lg font-semibold mb-2">Key Features:</h3>
+                    <ul class="list-disc list-inside text-gray-700">
+                      <li> Ariyana resort apartments.</li>
+                      <li>2BR apartment for rent      </li>
+                      <li>Air-conditioned master bedroom   </li>
+                      <li>Hot water                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+  
+
+
+    </div>
+<footer class="bg-sky-950 py-12 px-6 border-t border-sky-900 mt-auto">
+  <div class="max-w-7xl mx-auto">
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
+      
+      <div class="col-span-2 md:col-span-3 lg:col-span-1">
+        <h3 class="text-yellow-400 font-semibold mb-4 text-sm uppercase tracking-wider">
+          Contact Us
+        </h3>
+        <ul class="space-y-3 text-sm text-gray-300">
+          <li class="flex items-start gap-2">
+            <i class="fas fa-map-marker-alt text-yellow-400 mt-1 shrink-0"></i>
+            <span>No.494, Puttalam Road,<br>Kurunegala.</span>
+          </li>
+          <li class="flex items-center gap-2">
+            <i class="fas fa-phone-alt text-yellow-400 shrink-0"></i>
+            <a href="tel:+94712741577" class="hover:text-white transition">+94 71 274 1577</a>
+          </li>
+          <li class="flex items-center gap-2">
+            <i class="fas fa-phone-alt text-yellow-400 shrink-0"></i>
+            <a href="tel:+94777720888" class="hover:text-white transition">+94 77 772 0888</a>
+          </li>
+          <li class="flex items-center gap-2">
+            <i class="fas fa-phone-alt text-yellow-400 shrink-0"></i>
+            <a href="tel:+94372231174" class="hover:text-white transition">+94 37 223 1174</a>
+          </li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="text-yellow-400 font-semibold mb-4 text-sm uppercase tracking-wider">
+          More
+        </h3>
+        <ul class="space-y-2 text-sm">
+          <li>
+            <a href="#" class="text-gray-300 hover:text-white transition">Sell Fast</a>
+          </li>
+          <li>
+            <a href="#" class="text-gray-300 hover:text-white transition">Membership</a>
+          </li>
+          <li>
+            <a href="#" class="text-gray-300 hover:text-white transition">Banner Ads</a>
+          </li>
+          <li>
+            <a href="#" class="text-gray-300 hover:text-white transition">Boost Ad</a>
+          </li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="text-yellow-400 font-semibold mb-4 text-sm uppercase tracking-wider">
+          Help & Support
+        </h3>
+        <ul class="space-y-2 text-sm">
+          <li>
+            <a href="#" class="text-gray-300 hover:text-white transition">FAQ</a>
+          </li>
+          <li>
+            <a href="#" class="text-gray-300 hover:text-white transition">Stay safe</a>
+          </li>
+          <li>
+            <a href="#" class="text-gray-300 hover:text-white transition">Contact Us</a>
+          </li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="text-yellow-400 font-semibold mb-4 text-sm uppercase tracking-wider">
+          About
+        </h3>
+        <ul class="space-y-2 text-sm">
+          <li>
+            <a href="#" class="text-gray-300 hover:text-white transition">About Us</a>
+          </li>
+          <li>
+            <a href="#" class="text-gray-300 hover:text-white transition">Careers</a>
+          </li>
+          <li>
+            <a href="#" class="text-gray-300 hover:text-white transition">Terms and Conditions</a>
+          </li>
+          <li>
+            <a href="#" class="text-gray-300 hover:text-white transition">Privacy policy</a>
+          </li>
+          <li>
+            <a href="#" class="text-gray-300 hover:text-white transition">Sitemap</a>
+          </li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="text-yellow-400 font-semibold mb-4 text-sm uppercase tracking-wider">
+          Blog & Guides
+        </h3>
+        <ul class="space-y-2 text-sm">
+          <li>
+            <a href="#" class="text-gray-300 hover:text-white transition">CarsGuide</a>
+          </li>
+          <li>
+            <a href="#" class="text-gray-300 hover:text-white transition">BikesGuide</a>
+          </li>
+          <li>
+            <a href="#" class="text-gray-300 hover:text-white transition">PropertyGuide</a>
+          </li>
+          <li>
+            <a href="#" class="text-gray-300 hover:text-white transition">Official Blog</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="mt-8 pt-6 border-t border-sky-900">
+      <p class="text-gray-400 text-xs text-center">
+    2026 © All Rights Reserved ARKAD  | Powered by Silicon Radon Networks (Pvt) Ltd
+      </p>
+    </div>
+  </div>
+</footer>
+</body>
+<script src="script.js"></script>
+
+<!-- Mirrored from project-ikman.vercel.app/Moreinfoproperty.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 07 Jun 2026 03:37:29 GMT -->
+</html>

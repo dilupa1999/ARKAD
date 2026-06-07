@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Mirrored from project-ikman.vercel.app/Veichlepage.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 07 Jun 2026 03:37:23 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ikman</title>
+    <script src="https://cdn.tailwindcss.com/"></script>
+    <link href="../cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+    <script src="../kit.fontawesome.com/a076d05399.html" crossorigin="anonymous"></script>
+    <link href="css/styles.css" rel="stylesheet">
+</head>
+<body>
+    <div class=" bg-white">
+      <!-- Header -->
+    <header class="bg-sky-950 p-4 sticky top-0 z-50 shadow-md">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+        
+        <a href="index.html" class="flex items-center gap-3 shrink-0">
+            <img src="images/logo.png" alt="Company Logo" class="h-8 sm:h-10 w-auto object-contain">
+            <h1 class="text-white text-xl sm:text-2xl font-bold tracking-wide">Company</h1>
+        </a>
+        
+        <form class="w-full max-w-md mx-auto sm:mx-0 order-3 sm:order-none">   
+            <label for="default-search" class="sr-only">Search</label>
+            <div class="relative">
+                <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                    <svg class="w-4 h-4 text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
+                    </svg>
+                </div>
+                <input type="search" id="default-search" class="block w-full p-3 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-white focus:ring-yellow-400 focus:border-yellow-400 focus:outline-none" placeholder="Search Vehicles, Electronics..." required />
+                <button type="submit" class="text-sky-950 absolute end-2 bottom-1.5 bg-yellow-400 hover:bg-yellow-500 font-semibold rounded-md text-sm px-4 py-1.5 transition duration-200">Search</button>
+            </div>
+        </form>
+
+        <div class="w-full sm:w-auto flex justify-center sm:justify-end order-2 sm:order-none">
+            <a href="Login.html" class="text-sky-950 bg-yellow-400 hover:bg-yellow-500 font-semibold rounded-lg text-sm px-5 py-2.5 transition duration-200 text-center w-full sm:w-auto block">
+                Sign in
+            </a>
+        </div>
+
+    </div>
+</header>
+<div class="max-w-7xl mx-auto bg-white p-2">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+      <!-- Sidebar Filters -->
+   <!-- Filter Sidebar -->
+   <div class="relative">
+    <!-- Toggle Button for Small Screens -->
+    <button
+      class="bg-yellow-400 text-black p-2 rounded-md fixed bottom-2 right-4 z-50 sm:hidden"
+      onclick="toggleSidebar()"
+    >
+      <i class="fas fa-sliders-h"></i>
+    </button>
+  
+    <!-- Sidebar Container -->
+    <aside
+      id="filterSidebar"
+      class="bg-white p-4 rounded-lg shadow-md fixed top-0 left-0 h-full w-64 transform -translate-x-full transition-transform duration-300 z-40 sm:relative sm:translate-x-0 sm:w-full sm:h-auto overflow-y-auto"
+    >
+      <div class="flex justify-between items-center mb-4 sm:hidden">
+        <h2 class="text-xl font-bold">Filters</h2>
+        <button
+          class="text-gray-500 hover:text-gray-700"
+          onclick="toggleSidebar()"
+        >
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <h2 class="text-xl font-bold mb-4 hidden sm:block">Veichles</h2>
+  
+      <div class="mb-6">
+        <h3 class="text-gray-700 font-bold mb-2">Category</h3>
+        <div class="space-y-2">
+          <label class="block">
+            <input type="checkbox" class="mr-2" /> Motorbike
+          </label>
+          <label class="block">
+            <input type="checkbox" class="mr-2" /> Car
+          </label>
+          <label class="block">
+            <input type="checkbox" class="mr-2" /> Van
+          </label>
+          <label class="block">
+            <input type="checkbox" class="mr-2" /> Truck
+          </label>
+          <label class="block">
+            <input type="checkbox" class="mr-2" /> Other Veichles
+          </label>
+        </div>
+      </div>
+  
+      <!-- Price Range Filter -->
+      <div class="w-full md:w-64 bg-white p-2 ">
+        <h2 class="text-lg font-semibold mb-2">Price Range</h2>
+        <div class="flex justify-between text-sm text-gray-600">
+            <span id="minPrice">Rs.0</span>
+            <span id="maxPrice">Rs:1000000</span>
+        </div>
+        <input type="range" id="priceRange" min="0" max="1000" value="50000" class="w-full mt-2">
+        <p class="text-center text-sm text-gray-700 mt-2">Selected: <span id="selectedPrice">Rs:50000</span></p>
+      </div>
+
+
+  
+      <!-- Condition Filter -->
+      <div class="mb-2  mt-4">
+        <h3 class="text-gray-700 font-bold mb-2">Condition</h3>
+        <div class="space-y-2">
+          <label class="block">
+            <input type="checkbox" class="mr-2" /> Brand New
+          </label>
+          <label class="block">
+            <input type="checkbox" class="mr-2" /> Used
+          </label>
+        </div>
+      </div>
+  
+      <!-- Location Filter -->
+      <div class="mb-4">
+        <button
+          type="button"
+          class="w-full flex justify-between items-center text-left text-gray-700 font-bold mb-2"
+          onclick="toggleFilter('condition')"
+        >
+          Location
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-5 w-5 transform transition-transform"
+            id="icon-condition"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M19 9l-7 7-7-7"
+            />
+          </svg>
+        </button>
+        <div id="filter-condition" class="space-y-2 hidden">
+          <label class="block">
+            <input type="checkbox" class="mr-2" /> All of Sri Lanka
+          </label>
+          <label class="block">
+            <input type="checkbox" class="mr-2" /> Colombo
+          </label>
+          <label class="block">
+            <input type="checkbox" class="mr-2" /> Kandy
+          </label>
+          <label class="block">
+            <input type="checkbox" class="mr-2" /> Gampaha
+          </label>
+          <label class="block">
+            <input type="checkbox" class="mr-2" /> Kurunagala
+          </label>
+          <label class="block">
+            <input type="checkbox" class="mr-2" /> Galle
+          </label>
+          <label class="block">
+            <input type="checkbox" class="mr-2" /> Jaffna
+          </label>
+          <label class="block">
+            <input type="checkbox" class="mr-2" /> Colombo
+          </label>
+          <label class="block">
+            <input type="checkbox" class="mr-2" /> Kandy
+          </label>
+          <label class="block">
+            <input type="checkbox" class="mr-2" /> Gampaha
+          </label>
+          <label class="block">
+            <input type="checkbox" class="mr-2" /> Kurunagala
+          </label>
+          <label class="block">
+            <input type="checkbox" class="mr-2" /> Galle
+          </label>
+          <label class="block">
+            <input type="checkbox" class="mr-2" /> Jaffna
+          </label>
+        </div>
+      </div>
+  
+      <!-- Apply Filters Button -->
+      <button
+        class="w-full bg-sky-950 text-white py-2 rounded-md shadow-md hover:bg-sky-900"
+      >
+        Apply Filters
+      </button>
+    </aside>
+  </div>
+  
+  
+
+      <!-- Main Content -->
+      <div class="col-span-3 ">
+        <div class="relative w-full glide-03 ">
+          <!-- Slides -->
+          <div class="overflow-hidden relative" data-glide-el="track">
+            <ul class="relative w-full overflow-hidden p-0 whitespace-no-wrap flex flex-no-wrap [backface-visibility: hidden] [transform-style: preserve-3d] [touch-action: pan-Y] [will-change: transform]">
+              <li class="relative">
+                <a href="Moreinfo.html" class="block">
+                  <img src="Images/car/3.jpg" class="w-full max-w-full max-h-full m-auto" />
+                  <!-- Overlay -->
+                  <div class="absolute inset-0 bg-black bg-opacity-30 flex flex-col justify-end p-4 text-white">
+                    <h3 class="text-lg font-semibold">Toyota Prius S GRADE 2013</h3>
+                    <p class="text-sm">Price: 4,500,000.00</p>
+                    <p class="text-sm">Model: 2013</p>
+                    <p class="text-sm">Seller: John Doe</p>
+                  </div>
+                </a>
+              </li>
+              
+              <li class="relative">
+                <a href="Moreinfo.html" class="block">
+                  <img src="Images/car/3.jpg" class="w-full max-w-full max-h-full m-auto" />
+                  <!-- Overlay -->
+                  <div class="absolute inset-0 bg-black bg-opacity-30 flex flex-col justify-end p-4 text-white">
+                    <h3 class="text-lg font-semibold">Toyota Prius S GRADE 2013</h3>
+                    <p class="text-sm">Price: 4,500,000.00</p>
+                    <p class="text-sm">Model: 2013</p>
+                    <p class="text-sm">Seller: John Doe</p>
+                  </div>
+                </a>
+              </li>
+              
+            </ul>
+          </div>
+          
+          <!-- Controls -->
+          <div class="absolute left-0 flex items-center justify-between w-full h-0 px-4 top-1/2 " data-glide-el="controls">
+              <button class="inline-flex items-center justify-center w-8 h-8 transition duration-300 border rounded-full lg:w-12 lg:h-12 text-slate-100 border-slate-100 hover:text-slate-900 hover:border-slate-900 focus-visible:outline-none bg-white/20" data-glide-dir="<" aria-label="prev slide">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                      <title>prev slide</title>
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 15.75L3 12m0 0l3.75-3.75M3 12h18" />
+                  </svg>
+              </button>
+              <button class="inline-flex items-center justify-center w-8 h-8 transition duration-300 border rounded-full lg:w-12 lg:h-12 text-slate-100 border-slate-100 hover:text-slate-900 hover:border-slate-900 focus-visible:outline-none bg-white/20" data-glide-dir=">" aria-label="next slide">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                      <title>next slide</title>
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
+                  </svg>
+              </button>
+          </div>
+          <!-- Indicators -->
+          <div class="absolute bottom-0 flex items-center justify-center w-full gap-2" data-glide-el="controls[nav]">
+              <button class="p-4 group" data-glide-dir="=0" aria-label="goto slide 1"><span class="block w-2 h-2 transition-colors duration-300 rounded-full ring-1 ring-slate-700 bg-white/20 focus:outline-none"></span></button>
+              <button class="p-4 group" data-glide-dir="=1" aria-label="goto slide 2"><span class="block w-2 h-2 transition-colors duration-300 rounded-full ring-1 ring-slate-700 bg-white/20 focus:outline-none"></span></button>
+              <button class="p-4 group" data-glide-dir="=2" aria-label="goto slide 3"><span class="block w-2 h-2 transition-colors duration-300 rounded-full ring-1 ring-slate-700 bg-white/20 focus:outline-none"></span></button>
+              <button class="p-4 group" data-glide-dir="=3" aria-label="goto slide 4"><span class="block w-2 h-2 transition-colors duration-300 rounded-full ring-1 ring-slate-700 bg-white/20 focus:outline-none"></span></button>
+          </div>
+      </div>
+        <div class="grid lg:grid-cols-1">
+            <!-- Card -->
+            <a class="group block rounded-xl overflow-hidden focus:outline-none bg-gray-50 m-1" href="Moreinfo.html">
+              <div class="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-5">
+                <div class="shrink-0 relative rounded-xl overflow-hidden w-full sm:w-56 h-44">
+                  <img class="group-hover:scale-105 group-focus:scale-105 transition-transform duration-500 ease-in-out size-full absolute top-0 start-0 object-cover rounded-xl" src="Images/car/1.jpg" alt="Blog Image">
+                </div>
+        
+                <div class="grow relative p-2">
+                  <p class="mt-4 inline-flex items-center gap-x-2 text-sm text-green-500 decoration-2 font-medium">
+                    5 minutes ago
+                    <i class="fa fa-clock" aria-hidden="true"></i>
+                  </p>
+                  <h3 class="text-xl font-semibold text-gray-800 group-hover:text-gray-600">
+                    Toyota Prius S GRADE 2013
+                  </h3>
+                  <p class="mt-3 text-gray-600">
+                    Colombo, Srilanka
+                  </p>
+                  <p class="mt-3 text-gray-600">
+                    LKR:4500000
+                  </p>
+                  <p class="mt-4 inline-flex items-center gap-x-1 text-sm text-sky-950 decoration-2 font-medium">
+                    500 Views
+                    <i class="fa fa-eye" aria-hidden="true"></i>
+                  </p>
+                </div>
+                
+              </div>
+            </a>
+            <a class="group block rounded-xl overflow-hidden focus:outline-none bg-gray-50 m-1" href="Moreinfo.html">
+              <div class="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-5">
+                <div class="shrink-0 relative rounded-xl overflow-hidden w-full sm:w-56 h-44">
+                  <img class="group-hover:scale-105 group-focus:scale-105 transition-transform duration-500 ease-in-out size-full absolute top-0 start-0 object-cover rounded-xl" src="Images/car/1.jpg" alt="Blog Image">
+                </div>
+        
+                <div class="grow relative p-2">
+                  <p class="mt-4 inline-flex items-center gap-x-2 text-sm text-green-500 decoration-2 font-medium">
+                    5 minutes ago
+                    <i class="fa fa-clock" aria-hidden="true"></i>
+                  </p>
+                  <h3 class="text-xl font-semibold text-gray-800 group-hover:text-gray-600">
+                    Toyota Prius S GRADE 2013
+                  </h3>
+                  <p class="mt-3 text-gray-600">
+                    Colombo, Srilanka
+                  </p>
+                  <p class="mt-3 text-gray-600">
+                    LKR:4500000
+                  </p>
+                  <p class="mt-4 inline-flex items-center gap-x-1 text-sm text-sky-950 decoration-2 font-medium">
+                    500 Views
+                    <i class="fa fa-eye" aria-hidden="true"></i>
+                  </p>
+                </div>
+                
+              </div>
+            </a>
+            <a class="group block rounded-xl overflow-hidden focus:outline-none bg-gray-50 m-1" href="Moreinfo.html">
+              <div class="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-5">
+                <div class="shrink-0 relative rounded-xl overflow-hidden w-full sm:w-56 h-44">
+                  <img class="group-hover:scale-105 group-focus:scale-105 transition-transform duration-500 ease-in-out size-full absolute top-0 start-0 object-cover rounded-xl" src="Images/car/1.jpg" alt="Blog Image">
+                </div>
+        
+                <div class="grow relative p-2">
+                  <p class="mt-4 inline-flex items-center gap-x-2 text-sm text-green-500 decoration-2 font-medium">
+                    5 minutes ago
+                    <i class="fa fa-clock" aria-hidden="true"></i>
+                  </p>
+                  <h3 class="text-xl font-semibold text-gray-800 group-hover:text-gray-600">
+                    Toyota Prius S GRADE 2013
+                  </h3>
+                  <p class="mt-3 text-gray-600">
+                    Colombo, Srilanka
+                  </p>
+                  <p class="mt-3 text-gray-600">
+                    LKR:4500000
+                  </p>
+                  <p class="mt-4 inline-flex items-center gap-x-1 text-sm text-sky-950 decoration-2 font-medium">
+                    500 Views
+                    <i class="fa fa-eye" aria-hidden="true"></i>
+                  </p>
+                </div>
+                
+              </div>
+            </a>
+            <!-- End Card -->
+       
+          </div>
+          <nav class="flex justify-center items-center gap-x-1" aria-label="Pagination">
+            <button type="button" class="min-h-[38px] min-w-[38px] py-2 px-2.5 inline-flex justify-center items-center gap-x-2 text-sm rounded-lg text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none" aria-label="Previous">
+              <svg class="shrink-0 size-3.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="m15 18-6-6 6-6"></path>
+              </svg>
+              <span class="sr-only">Previous</span>
+            </button>
+            <div class="flex items-center gap-x-1">
+              <button type="button" class="min-h-[38px] min-w-[38px] flex justify-center items-center bg-gray-200 text-gray-800 py-2 px-3 text-sm rounded-lg focus:outline-none focus:bg-gray-300 disabled:opacity-50 disabled:pointer-events-none" aria-current="page">1</button>
+              <button type="button" class="min-h-[38px] min-w-[38px] flex justify-center items-center text-gray-800 hover:bg-gray-100 py-2 px-3 text-sm rounded-lg focus:outline-none focus:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none">2</button>
+              <button type="button" class="min-h-[38px] min-w-[38px] flex justify-center items-center text-gray-800 hover:bg-gray-100 py-2 px-3 text-sm rounded-lg focus:outline-none focus:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none">3</button>
+            </div>
+            <button type="button" class="min-h-[38px] min-w-[38px] py-2 px-2.5 inline-flex justify-center items-center gap-x-2 text-sm rounded-lg text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none" aria-label="Next">
+              <span class="sr-only">Next</span>
+              <svg class="shrink-0 size-3.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="m9 18 6-6-6-6"></path>
+              </svg>
+            </button>
+          </nav>
+      </div>
+    </div>
+  </div>
+  
+
+
+    </div>
+<footer class="bg-sky-950 py-12 px-6 border-t border-sky-900 mt-auto">
+  <div class="max-w-7xl mx-auto">
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
+      
+      <div class="col-span-2 md:col-span-3 lg:col-span-1">
+        <h3 class="text-yellow-400 font-semibold mb-4 text-sm uppercase tracking-wider">
+          Contact Us
+        </h3>
+        <ul class="space-y-3 text-sm text-gray-300">
+          <li class="flex items-start gap-2">
+            <i class="fas fa-map-marker-alt text-yellow-400 mt-1 shrink-0"></i>
+            <span>No.494, Puttalam Road,<br>Kurunegala.</span>
+          </li>
+          <li class="flex items-center gap-2">
+            <i class="fas fa-phone-alt text-yellow-400 shrink-0"></i>
+            <a href="tel:+94712741577" class="hover:text-white transition">+94 71 274 1577</a>
+          </li>
+          <li class="flex items-center gap-2">
+            <i class="fas fa-phone-alt text-yellow-400 shrink-0"></i>
+            <a href="tel:+94777720888" class="hover:text-white transition">+94 77 772 0888</a>
+          </li>
+          <li class="flex items-center gap-2">
+            <i class="fas fa-phone-alt text-yellow-400 shrink-0"></i>
+            <a href="tel:+94372231174" class="hover:text-white transition">+94 37 223 1174</a>
+          </li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="text-yellow-400 font-semibold mb-4 text-sm uppercase tracking-wider">
+          More
+        </h3>
+        <ul class="space-y-2 text-sm">
+          <li>
+            <a href="#" class="text-gray-300 hover:text-white transition">Sell Fast</a>
+          </li>
+          <li>
+            <a href="#" class="text-gray-300 hover:text-white transition">Membership</a>
+          </li>
+          <li>
+            <a href="#" class="text-gray-300 hover:text-white transition">Banner Ads</a>
+          </li>
+          <li>
+            <a href="#" class="text-gray-300 hover:text-white transition">Boost Ad</a>
+          </li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="text-yellow-400 font-semibold mb-4 text-sm uppercase tracking-wider">
+          Help & Support
+        </h3>
+        <ul class="space-y-2 text-sm">
+          <li>
+            <a href="#" class="text-gray-300 hover:text-white transition">FAQ</a>
+          </li>
+          <li>
+            <a href="#" class="text-gray-300 hover:text-white transition">Stay safe</a>
+          </li>
+          <li>
+            <a href="#" class="text-gray-300 hover:text-white transition">Contact Us</a>
+          </li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="text-yellow-400 font-semibold mb-4 text-sm uppercase tracking-wider">
+          About
+        </h3>
+        <ul class="space-y-2 text-sm">
+          <li>
+            <a href="#" class="text-gray-300 hover:text-white transition">About Us</a>
+          </li>
+          <li>
+            <a href="#" class="text-gray-300 hover:text-white transition">Careers</a>
+          </li>
+          <li>
+            <a href="#" class="text-gray-300 hover:text-white transition">Terms and Conditions</a>
+          </li>
+          <li>
+            <a href="#" class="text-gray-300 hover:text-white transition">Privacy policy</a>
+          </li>
+          <li>
+            <a href="#" class="text-gray-300 hover:text-white transition">Sitemap</a>
+          </li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="text-yellow-400 font-semibold mb-4 text-sm uppercase tracking-wider">
+          Blog & Guides
+        </h3>
+        <ul class="space-y-2 text-sm">
+          <li>
+            <a href="#" class="text-gray-300 hover:text-white transition">CarsGuide</a>
+          </li>
+          <li>
+            <a href="#" class="text-gray-300 hover:text-white transition">BikesGuide</a>
+          </li>
+          <li>
+            <a href="#" class="text-gray-300 hover:text-white transition">PropertyGuide</a>
+          </li>
+          <li>
+            <a href="#" class="text-gray-300 hover:text-white transition">Official Blog</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="mt-8 pt-6 border-t border-sky-900">
+      <p class="text-gray-400 text-xs text-center">
+    2026 © All Rights Reserved ARKAD  | Powered by Silicon Radon Networks (Pvt) Ltd
+      </p>
+    </div>
+  </div>
+</footer>
+</body>
+<script src="script.js"></script>
+<script src="../cdnjs.cloudflare.com/ajax/libs/Glide.js/3.0.2/glide.js"></script>
+
+<script>
+    var glide03 = new Glide('.glide-03', {
+        type: 'carousel',
+        focusAt: 'center',
+        perView: 2,
+        autoplay: 3000,
+        animationDuration: 700,
+        gap: 24,
+        classes: {
+            activeNav: '[&>*]:bg-slate-700',
+        },
+        breakpoints: {
+            1024: {
+                perView: 2
+            },
+            640: {
+                perView: 1
+            }
+        },
+    });
+
+    glide03.mount();
+</script>
+
+<!-- Mirrored from project-ikman.vercel.app/Veichlepage.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 07 Jun 2026 03:37:23 GMT -->
+</html>
