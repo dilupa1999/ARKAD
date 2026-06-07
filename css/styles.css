@@ -1,8 +1,14 @@
 @font-face {
-    font-family: 'CustomFont'; /* Your custom font name */
-    src: url('../Fonts/Helvetica.ttf') format('truetype'); /* Path to the font file */
+  font-family: "CustomFont"; /* Your custom font name */
+  src: url("../Fonts/Helvetica.ttf") format("truetype"); /* Path to the font file */
+}
+body {
+  font-family: "CustomFont", sans-serif; /* Fallback font included */
+}
+theme: {
+  extend: {
+    colors: {
+      arkadgreen: "#03291A";
+    }
   }
-  body {
-    font-family: 'CustomFont', sans-serif; /* Fallback font included */
-  }
-  
+}
